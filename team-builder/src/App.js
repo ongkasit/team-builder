@@ -1,27 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
 import Form from "./Components/Form";
+import ActualForm from "./Components/ActualForm";
 
 
 function App() {
-  const [members, setMembers] = useState([]);
+  const [members, setMembers] = useState([
+  {
+    name: "Kasit",
+    email: "kasit.nganthavee@gmail.com",
+    role: "CEO"
+  }
+  ]);
+
+  const addNewForm = member => {
+    const newForm = setMembers([...members, member]);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <Form />
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Register to Thailand's First Unicorn</h1>
+          <Form addNewForm={addNewForm} />
+          <ActualForm members={members} />
       </header>
     </div>
   );
